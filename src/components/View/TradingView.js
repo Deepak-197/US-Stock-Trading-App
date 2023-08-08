@@ -1,19 +1,19 @@
 import React from 'react';
 import TradingViewWidget, { Themes } from 'react-tradingview-widget';
-import Navbar from './Navbar';
+
 
 export const TradingView = () => {
 
 
   return (
     <>
-    <Navbar />
-    <div style={{width:"70%", margin:"100px auto", height:"700px"}}>
-      <h1 style={{textAlign:"left"}}>Trading View</h1>
+    
+    <div style={{width:"100%", margin:"auto", height:"850px", padding:"0px 5px 0px 0px"}}>
+      
        <div style={{height:"100%"}}>
         <TradingViewWidget
             symbol="NASDAQ:AAPL"
-            theme={Themes.LIGHT}
+            theme={Themes.DARK}
             locale="fr"
             autosize
         />

@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // If using React Router
 import 'bootstrap/dist/css/bootstrap.min.css';
+import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
+import HistoryIcon from '@mui/icons-material/History';
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
+import { Avatar, ChakraProvider } from '@chakra-ui/react'
+import Profiepic from "../../assets/profile.jpeg"
+import logo from "../../assets/logo_1.png"
+import PopoverProfile from './PopoverProfile';
+import Notification  from './Notification';
+import { DarkModeTheme } from './DarkModeTheme';
 
 
 const Navbar = () => {
@@ -13,9 +22,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container">
-        <Link className="navbar-brand" to="/" style={{color:"#26D7AB"}}>Stock Trading App</Link>
+    <nav className="navbar navbar-expand-lg navbar-light"  >
+      <div className="container-fluid">
+        <Link className="navbar-brand" to="/"><img className='logo' src={logo} alt="logo" /></Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -25,27 +34,53 @@ const Navbar = () => {
         </button>
         <div
           className={`collapse navbar-collapse ${isMobileMenuOpen ? 'show' : ''}`}
-          id="navbarSupportedContent"  style={{ marginLeft:"400px"}}
+          id="navbarSupportedContent"  
         >
+        
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <Link className="nav-link" to="/dashboard">Dashboard</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/watchlist">Watchlist</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/holding">Holding</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/">Subcriptions</Link>
-            </li>
-
             
-            <li className="nav-item">
-              <Link className="nav-link" to="/signup">Signup</Link>
-            </li>
-          </ul>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/">Dashboard</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/order">Orders</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/holdings">Holdings</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/positions">Positions</Link>
+                </li>
+
+
+                <li className="nav-item">
+                  <Link className="nav-link" to="/funds">Funds</Link>
+                </li>
+              </ul>
+            <div style={{marginLeft:"100px"}} className='profile-noti'>
+                <ul className="navbar-nav ml-auto">
+                  <li className="nav-item">
+                        <Link className="nav-link" to=""><WbSunnyOutlinedIcon /> </Link>
+                  </li>
+                  <li className="nav-item">
+                        <Link className="nav-link" to=""><HistoryIcon /></Link>
+                  </li>
+                  <li className="nav-item">
+                        {/* <Link className="nav-link" to=""><NotificationsNoneOutlinedIcon /></Link> */}
+                        <ChakraProvider>
+                           <Notification  />  
+                        </ChakraProvider>
+                  </li>
+                  <li className="nav-item">
+                        
+                        <ChakraProvider>
+                           <PopoverProfile />  
+                        </ChakraProvider>
+                        
+                  </li>
+                </ul>
+            </div>
+          
         </div>
       </div>
     </nav>

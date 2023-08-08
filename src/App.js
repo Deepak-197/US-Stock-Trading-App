@@ -13,18 +13,28 @@ import './App.css';
 
 // export default App;
 import React from 'react';
-
-
-import { Mainroutes } from './components/Mainroute/Mainroutes';
-import Sidebar from './components/View/Sidebar';
+import Navbar from './components/View/Navbar';
+import { CompanyList } from './components/View/CompanyList';
+import {Mainroutes} from './components/Mainroute/Mainroutes';
 
 
 const App = () => {
   return (
     <div className="App">
       
-      <Mainroutes />
-      {/* <Sidebar /> */}
+      {/* <Mainroutes /> */}
+      <div>
+         <Navbar />
+      </div>
+      <div className='parallel-div'>
+        <div>
+          <CompanyList />
+        </div>
+        <div>
+          <Mainroutes />
+        </div>
+        
+      </div>
     </div>
   )
 }

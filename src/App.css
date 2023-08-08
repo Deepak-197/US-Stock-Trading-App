@@ -40,4 +40,22 @@
 
 
 
+.parallel-div{
+  width: 100%;
+  /* border: 1px solid red; */
+  display: flex;
+}
+
+.parallel-div>div:nth-child(1){
+  width: 31.5%;
+  /* border: 1px solid blue; */
+}
+.parallel-div>div:nth-child(2){
+  width: 68.5%;
+  /* border: 1px solid blue; */
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+
 /* background-image: linear-gradient(to right, rgb(83, 4, 197), rgb(174, 17, 153)); */
+/* background: linear-gradient(113deg, #3500D4 0%, #F61C7A 100%); */
