@@ -12,6 +12,7 @@ import {
   Td,
   TableCaption,
   TableContainer,
+  ChakraProvider,
   
 } from '@chakra-ui/react';
 import { ChevronDownIcon, SearchIcon, SettingsIcon, ChevronUpIcon } from '@chakra-ui/icons';
@@ -26,6 +27,7 @@ import { SellModel } from './SellModel';
 import Statusbid from './Statusbid';
 import { useNavigate } from 'react-router-dom';
 import LegendToggleIcon from '@mui/icons-material/LegendToggle';
+import { TablePopup } from './TablePopup';
 
 
 
@@ -37,6 +39,8 @@ export const CompanyList = () => {
   const [currentlist, setCurrentlist] = useState(stockTable)
   const [myList, setMylist] = useState(stockTable)
   const [favoriteList, setfavoriteList] = useState(favoriteTable)
+  const [stockName, setStockName] = useState("")
+  const [selectedStock, setSelectedStock] = useState("")
 
   const handleViewChange = (view) => {
     setCurrentlist(view)
@@ -105,7 +109,8 @@ export const CompanyList = () => {
           </Box>
           <Box className='table-data-list'>
 
-            <TableContainer w={"100%"} mt={"20px"}>
+            <TableContainer w={"100%"} mt={"20px"}> 
+              
               <Table variant='striped' colorScheme='teal' w={"100%"}>
                 {/* <TableCaption>Imperial to metric conversion factors</TableCaption> */}
 
@@ -122,17 +127,19 @@ export const CompanyList = () => {
                 <Tbody w={"100%"} mt={'20px'}>
                 {currentlist === myList && (
                  <>
-                  {stockTable.map((e) => {
+                  {stockTable.map((e,index) => {
                     return (
                       <Box key={e.stock} w={"100%"} >
-                        <Tr w={"100%"} className='tabledata'>
+                        <Tr w={"100%"} h={"70px"} className={(index===selectedStock ? "selected" : "") + " tabledata"}  onClick={()=>{
+                          setStockName(e.title)
+                          setSelectedStock(index)
+                          }}>
                           <Td className='stock-data-logo' ><img src={e.image} /></Td>
                           <Td className={`stock-data-text ${(Number(e.stock) >= 0) ? positiveClass : negativeClass}`} >{e.title}</Td>
                           <Td className="stock-data-stock"> {e.stock}% {e.stock >= 0 ? <ChevronUpIcon color='green' /> : <ChevronDownIcon color='red' />}</Td>
                           <Td className={`stock-data-stock ${(Number(e.stock) >= 0) ? positiveClass : negativeClass}`}>{e.price}</Td>
-
                         </Tr>
-                        <hr />
+                        {/* <hr /> */}
                       </Box>
                     )
                   })}
@@ -143,14 +150,14 @@ export const CompanyList = () => {
                   {favoriteTable.map((e) => {
                     return (
                       <Box key={e.stock} w={"100%"} >
-                        <Tr w={"100%"} className='tabledata'>
+                        <Tr w={"100%"} h={"70px"} className='tabledata'>
                           <Td className='stock-data-logo' ><img src={e.image} /></Td>
                           <Td className={`stock-data-text ${(Number(e.stock) >= 0) ? positiveClass : negativeClass}`} >{e.title}</Td>
                           <Td className="stock-data-stock"> {e.stock}% {e.stock >= 0 ? <ChevronUpIcon color='green' /> : <ChevronDownIcon color='red' />}</Td>
                           <Td className={`stock-data-stock ${(Number(e.stock) >= 0) ? positiveClass : negativeClass}`}>{e.price}</Td>
-
+                      
                         </Tr>
-                        <hr />
+                        {/* <hr /> */}
                       </Box>
                     )
                   })}
@@ -270,8 +277,8 @@ export const CompanyList = () => {
                   </div>
                  </div>}</div>
           <Box className='botton-buttons'>
-             <Button variant="contained" sx={{backgroundColor:"#3500D4"}}><BuyModel /></Button>
-             <Button variant="contained" sx={{backgroundColor:"#F61C7A"}}><SellModel /></Button>
+             <Button variant="contained" sx={{backgroundColor:"#3500D4"}}><BuyModel stockName={stockName}/></Button>
+             <Button variant="contained" sx={{backgroundColor:"#F61C7A"}}><SellModel stockName={stockName}/></Button>
              <Button variant="outlined"  sx={{border:"1px solid rgb(212, 212, 212)"}} onClick={handleButtonClick}><img width={20} src={Framelogo} /> </Button>
              <Button variant="outlined" sx={{border:"1px solid rgb(212, 212, 212)"}}  onClick={handleTradingView}><LegendToggleIcon sx={{color:'gray'}} /></Button>
              <Button variant="outlined">

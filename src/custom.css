@@ -590,6 +590,14 @@ background-clip: text;
   display: flex;
   justify-content: space-between;
   text-align: left;
+  padding: 2px;
+  align-items: center;
+
+}
+
+
+.selected{
+  background-color: #e9e9e9 !important;
 }
 
 
@@ -1171,7 +1179,7 @@ color: #3500D4;
 .margincharge{
   width: 100%;
   /* border: 1px solid #ccc; */
-  margin: 8px 20px 0px 0px;
+  margin: 30px 20px 0px 0px;
   display: flex;
   align-items: center;
   align-content: center;
@@ -1285,4 +1293,116 @@ color: #3500D4;
     -webkit-text-fill-color: transparent;
   }
 
+
+
+  /* Toggle-Buy-Sell */
+  .toggleBuySell{
+    text-align: center;
+    /* padding: 20px; */
+  }
+  
+  .switch-container {
+    margin-bottom: 20px;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* background-color: #ccc; */
+    background-color: #27AE60;
+    transition: 0.4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: '';
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+  }
+  
+  input:checked + .slider {
+    /* background-color: #2196f3; */
+    background-color: rgb(238,48,60);
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  
+  .div-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    color: white;
+    background-color: #27AE60;
+    margin-top: 20px;
+  }
+  .div-container>h2{
+      font-weight: bold;
+  }
+  .div-alt-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    color: white;
+    background-color: rgb(238,48,60);
+    margin-top: 20px;
+  }
+  
+/* ... (existing styles) */
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.option-button {
+  background-color: #ccc;
+  color: #333;
+  border: none;
+  font-weight: 400;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.active-default {
+  background-color: #27AE60;
+  color: white;
+  font-weight: 500;
+}
+
+.active-alternate {
+  background-color: rgb(238,48,60);
+  color: white;
+  font-weight: 500;
+}
 

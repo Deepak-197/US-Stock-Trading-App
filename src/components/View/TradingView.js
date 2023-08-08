@@ -13,7 +13,7 @@ export const TradingView = () => {
        <div style={{height:"100%"}}>
         <TradingViewWidget
             symbol="NASDAQ:AAPL"
-            theme={Themes.DARK}
+            theme={Themes.LIGHT}
             locale="fr"
             autosize
         />
